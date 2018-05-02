@@ -1,5 +1,7 @@
 ﻿# Screenshotter
  
+ Mainly a test with AWS to try and run python scripts on their cloud systems, sends 5 screenshots over 5 minutes and saves it to a S3 bucket on AWS. 
+ 
 Instance in AWS
 EC2 t2.micro 
 
