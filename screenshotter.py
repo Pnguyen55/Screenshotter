@@ -7,15 +7,16 @@ import boto3
 s3 = boto3.resource('s3')
 client = boto3.client(
     's3',
-    aws_access_key_id='AKIAJUCUVC3KJ2OZRIEQ',
-    aws_secret_access_key='u7GXFmzAwCmJzxkG5ORmr5Kq5xzYwkQLLLQvHq6C'
+    #aws_access_key_id= the id of your secret access key,
+    #aws_secret_access_key= your secret access key to aws
 )
 sct = mss()
 increment = 0
 username = 'test_pc'
 running = True
+bucket_name = 'peterscreenshotbucket'
 
-# Continually run script to save screenshots 30 and save to S3
+# Continually run script to save screenshots 5 over 5 minutes and save to S3
 while running:
     if(increment == 5):
         running = False
@@ -24,6 +25,6 @@ while running:
     increment += 1
     filename = str(increment) + '.png'
     file = sct.shot(output=filename)
-    client.upload_file(filename, 'peterscreenshotbucket', username + '/' + filename)
+    client.upload_file(filename, bucket_name, username + '/' + filename)
     print(file)
-    time.sleep(10)
+    time.sleep(60)
